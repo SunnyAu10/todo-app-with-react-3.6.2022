@@ -12,7 +12,9 @@ body {
 header {
   font-size: 2rem;
 }
-
+header:hover {
+  text-decoration: line-through;
+}
 header,
 form {
   min-height: 20vh;

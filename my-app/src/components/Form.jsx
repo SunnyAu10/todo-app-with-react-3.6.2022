@@ -16,7 +16,12 @@ export default function Form({
     e.preventDefault();
     setTodos([
       ...todos,
-      { text: inputText, completed: false, id: Math.random() * 1000 }
+      {
+        text: inputText,
+        completed: false,
+        deleted: false,
+        id: Math.random() * 1000
+      }
     ]);
     setInputText("");
   }

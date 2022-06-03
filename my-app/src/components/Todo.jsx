@@ -2,8 +2,23 @@ import React from "react";
 
 export default function Todo({ text, todo, todos, setTodos }) {
   //Events
-  function deleteHandler() {
+  function deleteTodo() {
     setTodos(todos.filter((el) => el.id !== todo.id));
+  }
+
+  function deleteHandler() {
+    setTodos(
+      todos.map((item) => {
+        if (item.id === todo.id) {
+          return {
+            ...item,
+            deleted: true
+          };
+        }
+        return item;
+      })
+    );
+    setTimeout(deleteTodo, 500);
   }
 
   function completeHandler() {
@@ -20,7 +35,7 @@ export default function Todo({ text, todo, todos, setTodos }) {
     );
   }
   return (
-    <div className="todo">
+    <div className={`todo ${todo.deleted ? "fall" : ""}`}>
       <li className={`todo-item ${todo.completed ? "completed" : ""}`}>
         {text}
       </li>
